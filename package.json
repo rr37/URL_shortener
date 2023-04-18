@@ -1,5 +1,5 @@
 {
-  "name": "URL_shortener",
+  "name": "url_shortener",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -12,6 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }
