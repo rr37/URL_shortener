@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/2gR7w', (req, res) => {
+  res.redirect('https://lighthouse.alphacamp.co/courses/100/units/20935')
+})
+
+
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
 })

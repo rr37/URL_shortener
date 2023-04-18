@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "code": "00000",
+      "url": "https://www.google.com/"
+    },
+    {
+      "id": 2,
+      "code": "11111",
+      "url": "https://www.cpbl.com.tw/"
+    },
+    {
+      "id": 3,
+      "code": "22222",
+      "url": "https://www.canva.com/"
+    },
+    {
+      "id": 4,
+      "code": "33333",
+      "url": "https://www.netflix.com/"
+    },
+    {
+      "id": 5,
+      "code": "44444",
+      "url": "https://tw.alphacamp.co/"
+    }
+  ]
+}
