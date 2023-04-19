@@ -1,8 +1,6 @@
 # URL_shortener
 
-<video width="100%" height="auto" controls>
-    <source src="./public/image/demo.mov" type="video/mp4">
-</video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/COVLiuW_c1o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ![Screenshot of URL_shortener](./public/image/lock_empty_submit.png)
 
