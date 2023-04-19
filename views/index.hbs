@@ -3,23 +3,46 @@
     <div>
       <h1 class="mb-5">URL Shortener</h1>
     </div>
-    {{#if id}}
-    <h1>找不到 http://localhost:3000/{{this.id}}，在下面造一個吧！</h1>
-    {{/if}}
     <div>
-      {{!-- <img src="../public/image/link.png" width="100px" height="100px" alt="url image" class="rounded"> --}}
-      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" class="rounded"
-        style="width: auto; height: 210px">
+      <img src="/image/link.png" style="width: auto; height: 210px" alt="url image" class="rounded">
     </div>
+    {{#if id}}
+    <h3 class="mt-5">找不到 {{this.appUrl}}{{this.id}}，在下面造一個吧！</h3>
+    {{/if}}
+    {{#if shortUrl}}
+    <div class="mt-5 d-flex flex-column align-items-center">
+      <h2>Shorten Success!</h2>
+      <h3>Try your own url:</h3>
+      <a href="{{shortUrl}}" target="_blank" class="h3">
+        <i class="fa fa-hand-point-right"></i>
+        {{shortUrl}}
+        <i class="fa fa-hand-point-left"></i>
+      </a>
+    </div>
+    {{!-- copy button --}}
+    {{!-- <div class="">
+      <button type="button" id="copy-button" class="btn btn-success px-5">
+        Copy
+      </button>
+    </div> --}}
+    <div class="mt-2">
+      <a href="/">
+        <button type="button" class="btn btn-secondary px-5">
+          Back
+        </button>
+      </a>
+    </div>
+    {{else}}
     <div class="mt-5">
       <form action="/" method="POST">
         <div class="d-flex row">
           {{!-- input url --}}
           <input type="url" name="url" id="url" placeholder="https://www.google.com/" required>
           {{!-- Shorten button --}}
-          <button type="submit" class="mt-2">Shorten</button>
+          <button type="submit" class="btn btn-primary mt-2">Shorten</button>
         </div>
       </form>
     </div>
+    {{/if}}
   </div>
 </div>

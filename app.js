@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const Url = require('./models/url')
+const generateCode = require('./generate_code')
+const appUrl = process.env.APP_URL || 'http://localhost:3000/'
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
@@ -9,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app = express()
+app.use(express.static('public'))
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // 取得資料庫連線狀態
@@ -31,10 +34,26 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.post('/', (req, res) => {
-  const url = req.body
-  console.log(url)
-  res.render('index')
+app.post('/', async (req, res) => {
+  const code = await generateCode(5)
+  const url = req.body.url
+
+  Url.findOne({ url: url })
+    // 檢查資料庫是否有一樣的網址資料，避免重複轉網址
+    .then((docs) =>
+      docs ? docs : Url.create({ code: code, url: url })
+    )
+    .then((docs) =>
+      res.render('index', { 
+        code: docs.code, 
+        url, 
+        shortUrl: appUrl + docs.code
+      })
+    )
+    .catch((err) => {
+      console.log(err)
+    })
+  
 })
 
 // 轉址到設定的位置
@@ -45,7 +64,7 @@ app.get('/:id', (req, res) => {
     .then((docs) => {
       // 找不到資料就回到首頁吧
       if (docs === null) {
-        res.render('index', {id})
+        res.render('index', { id, appUrl })
       } else {
         // 重新轉址到該 url
         res.redirect(docs.url)
@@ -57,5 +76,5 @@ app.get('/:id', (req, res) => {
 })
 
 app.listen(3000, () => {
-  console.log('App is running on http://localhost:3000')
+  console.log(`App is running on ${appUrl}`)
 })
