@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const Url = require('./models/url')
 
 // 加入這段 code, 僅在非正式環境時, 使用 dotenv
 if (process.env.NODE_ENV !== 'production') {
@@ -28,10 +29,24 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/2gR7w', (req, res) => {
-  res.redirect('https://lighthouse.alphacamp.co/courses/100/units/20935')
+// 轉址到設定的位置
+app.get('/:id', (req, res) => {
+  const id = req.params.id
+  // 在資料庫中，尋找短網址後五位數等於 id 的那筆資料
+  Url.findOne({ code: id })
+    .then((docs) => {
+      // 找不到資料就回到首頁吧
+      if (docs === null) {
+        res.render('index', {id})
+      } else {
+        // 重新轉址到該 url
+        res.redirect(docs.url)
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 })
-
 
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
