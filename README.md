@@ -1,6 +1,6 @@
 # URL_shortener
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/COVLiuW_c1o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![demo of URL_shortener](./public/image/demo_snapshot.png)](https://www.youtube.com/watch?v=COVLiuW_c1o)
 
 ![Screenshot of URL_shortener](./public/image/lock_empty_submit.png)
 
