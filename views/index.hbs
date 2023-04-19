@@ -1,4 +1,25 @@
-<h2>Hello world! 這是短網址產生器</h2>
-{{#if id}}
-<h2>找不到 http://localhost:3000/{{this.id}}，在下面造一個吧！</h2>
-{{/if}}
+<div class="container mt-5">
+  <div class="d-flex flex-column align-items-center">
+    <div>
+      <h1 class="mb-5">URL Shortener</h1>
+    </div>
+    {{#if id}}
+    <h1>找不到 http://localhost:3000/{{this.id}}，在下面造一個吧！</h1>
+    {{/if}}
+    <div>
+      {{!-- <img src="../public/image/link.png" width="100px" height="100px" alt="url image" class="rounded"> --}}
+      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" class="rounded"
+        style="width: auto; height: 210px">
+    </div>
+    <div class="mt-5">
+      <form action="/" method="POST">
+        <div class="d-flex row">
+          {{!-- input url --}}
+          <input type="url" name="url" id="url" placeholder="https://www.google.com/" required>
+          {{!-- Shorten button --}}
+          <button type="submit" class="mt-2">Shorten</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
