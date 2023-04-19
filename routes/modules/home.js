@@ -13,10 +13,10 @@ router.post('/', async (req, res) => {
   const code = await generateCode(5)
   const url = req.body.url
 
-  Url.findOne({ url: url })
+  Url.findOne({ url })
     // 檢查資料庫是否有一樣的網址資料，避免重複轉網址
     .then((docs) =>
-      docs ? docs : Url.create({ code: code, url: url })
+      docs || Url.create({ code, url })
     )
     .then((docs) =>
       res.render('index', {
